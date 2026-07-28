@@ -1,0 +1,20 @@
+/* セクション共通の見出し・内側余白。各セクションコンポーネントから利用する */
+.section-heading {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-6);
+}
+
+.section-lead {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  max-width: 640px;
+  margin: calc(var(--space-3) * -1) 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: var(--font-size-xl);
+  }
+}
