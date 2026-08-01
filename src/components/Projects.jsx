@@ -11,7 +11,7 @@ function Projects() {
         </h2>
         <ul className="projects__list">
           {projects.map((project, projectIndex) => (
-            <li className="project-card" key={project.title}>
+            <li className="project-card glass-panel" key={project.title}>
               <article aria-labelledby={`project-${projectIndex}-heading`}>
                 <header className="project-card__header">
                   <h3 className="project-card__title" id={`project-${projectIndex}-heading`}>

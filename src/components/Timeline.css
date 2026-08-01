@@ -1,8 +1,10 @@
 .timeline {
   padding: var(--space-8) var(--space-5);
-  background-color: var(--color-bg-elevated);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .timeline__inner {
@@ -37,7 +39,7 @@
   height: 12px;
   border-radius: 50%;
   background-color: var(--color-accent);
-  border: 2px solid var(--color-bg-elevated);
+  border: 2px solid var(--glass-bg-strong);
 }
 
 .timeline__date {

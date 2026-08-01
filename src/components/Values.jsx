@@ -11,7 +11,7 @@ function Values() {
         </h2>
         <ul className="values__grid">
           {values.map((value) => (
-            <li className="values__card" key={value.title}>
+            <li className="values__card glass-panel" key={value.title}>
               <h3 className="values__title">{value.title}</h3>
               <p className="values__description">{value.description}</p>
             </li>

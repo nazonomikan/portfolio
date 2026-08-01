@@ -8,16 +8,40 @@
    コンポーネント側のCSSで直接カラーコードやpx値を書かない。
    ========================================================================== */
 :root {
-  /* --- カラー: ダークテーマ基調、差し色はアクセント（アンバー）1色のみ --- */
-  --color-bg: #121317;
-  --color-bg-elevated: #1b1d22;
-  --color-bg-elevated-2: #22252b;
-  --color-border: #2f333b;
-  --color-text: #eef0f2;
-  --color-text-muted: #a6acb5;
-  --color-accent: #d8a24a;
-  --color-accent-strong: #e8b768;
-  --color-accent-on: #14161a; /* アクセント背景の上に置く文字色 */
+  /* --- カラー: ライトテーマ基調、差し色はアクセント（アンバー）1色のみ ---
+     ライト背景上でもコントラスト比4.5:1以上を保つため、
+     ダーク版より彩度・明度を落とした濃いアンバーを採用している。 */
+  --color-bg: #eef2f8;
+  --color-bg-elevated: #ffffff;
+  --color-bg-elevated-2: #f5f7fb;
+  --color-border: rgba(15, 23, 42, 0.1);
+  --color-text: #1c2030;
+  --color-text-muted: #4b5163;
+  --color-accent: #96590d;
+  --color-accent-strong: #7f4b0b;
+  --color-accent-on: #fff6ea; /* アクセント背景の上に置く文字色 */
+
+  /* --- リキッドグラス（フロストガラス）トークン ---
+     カード・サイドバー等、ガラス化する要素はすべてこれらの変数経由で
+     半透明背景・境界線・影・ぼかし量を参照する。 */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-blur: 20px;
+  --glass-shadow: 0 8px 32px rgba(30, 41, 59, 0.12);
+
+  /* --- 背景装飾用のブロブ（オーブ）色。上品さを優先し低彩度・半透明に留める --- */
+  --blob-amber: rgba(216, 162, 74, 0.22);
+  --blob-blue: rgba(120, 160, 224, 0.2);
+  --blob-purple: rgba(176, 150, 224, 0.16);
+
+  /* --- サイドバー展開時の背景オーバーレイ --- */
+  --color-overlay: rgba(15, 23, 42, 0.25);
+
+  /* --- レイヤー管理 --- */
+  --z-sidebar: 200;
+  --z-sidebar-toggle: 210;
+  --z-sidebar-overlay: 190;
 
   /* --- フォント --- */
   --font-sans: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,7 +77,7 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ==========================================================================
@@ -112,7 +136,13 @@ p {
    ベーススタイル
    ========================================================================== */
 body {
+  /* ガラス越しの透過感を演出する背景ブロブ。派手にならないよう低彩度・広範囲でぼかす */
   background-color: var(--color-bg);
+  background-image: radial-gradient(640px circle at 12% 8%, var(--blob-amber), transparent 60%),
+    radial-gradient(720px circle at 88% 22%, var(--blob-blue), transparent 60%),
+    radial-gradient(680px circle at 50% 92%, var(--blob-purple), transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: var(--font-size-base);

@@ -4,7 +4,7 @@ import './Hero.css'
 // サイト唯一のh1（氏名）を含むヒーローセクション
 function Hero() {
   return (
-    <header className="hero">
+    <header className="hero" id="hero">
       <div className="hero__inner">
         <p className="hero__role">{hero.role}</p>
         <h1 className="hero__name">{hero.name}</h1>
