@@ -15,8 +15,6 @@
 
 .values__card {
   padding: var(--space-6);
-  background-color: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
 
