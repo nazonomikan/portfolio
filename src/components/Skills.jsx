@@ -1,7 +1,7 @@
 import { sectionTitles, skills } from '../data/profile'
 import './Skills.css'
 
-// できること（スキル）。デザイン / 実装 / リサーチの3カテゴリ。
+// できること（スキル）。バックエンド / フロントエンド / ツール・インフラの3カテゴリ。
 // パーセントバーやレベル星は使わず、各項目を文章で表現する。
 function Skills() {
   return (
