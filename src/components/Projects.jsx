@@ -1,7 +1,7 @@
 import { projectLabels, projects, sectionTitles } from '../data/profile'
 import './Projects.css'
 
-// 制作事例。1件につき「課題・担当範囲・プロセス・成果・学び」の5ブロックを必ず表示する。
+// 制作事例。1件につき「課題・担当範囲・技術スタック・プロセス・成果・学び」の6ブロックを必ず表示する。
 function Projects() {
   return (
     <section className="projects" id="projects" aria-labelledby="projects-heading">
@@ -31,6 +31,17 @@ function Projects() {
                 <div className="project-card__block">
                   <h4 className="project-card__block-title">{projectLabels.role}</h4>
                   <p className="project-card__block-text">{project.role}</p>
+                </div>
+
+                <div className="project-card__block">
+                  <h4 className="project-card__block-title">{projectLabels.techStack}</h4>
+                  <ul className="project-card__tech-list">
+                    {project.techStack.map((tech) => (
+                      <li className="project-card__tech-tag" key={tech}>
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className="project-card__block">
