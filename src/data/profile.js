@@ -428,11 +428,6 @@ export const timeline = [
     description: 'プログラミング基礎とアルゴリズム・データ構造を学ぶ学部に進学。',
   },
   {
-    date: '2024年6月',
-    title: 'Webエンジニアインターンシップ（2週間）',
-    description: 'スタートアップにて、既存プロダクトのバックエンドAPI改修とテストコード追加を経験。',
-  },
-  {
     date: '2024年10月',
     title: 'ゼミ出席管理Slack Bot 開発開始',
     description: 'Bot本体の実装とGoogle Sheets連携を担当し、2025年2月に運用開始。',
