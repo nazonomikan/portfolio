@@ -69,8 +69,8 @@ export const hero = {
   role: 'バックエンド志向のWebアプリケーションエンジニア / 情報工学専攻',
   bio: '「動けば良い」で終わらせず、なぜそう設計したかを説明できるコードを書くことを心がけています。個人開発ではDB設計からAPI実装・デプロイまでを一気通貫で担当し、ハッカソンではチームのバックエンドを担当してきました。計測してから直す、が信条です。',
   meta: [
-    { label: '所属', value: '○○大学 情報工学部 情報工学科' },
-    { label: '卒業', value: '2027年3月 卒業予定' },
+    { label: '所属', value: '千葉工業大学 情報変革科学部 情報工学科' },
+    { label: '卒業', value: '2029年3月 卒業見込み' },
   ],
   links: [
     { label: 'GitHub', href: 'https://github.com/nazonomikan', external: true },
@@ -187,91 +187,6 @@ export const skills = [
  *   learning   学び     : この案件から得た学び
  * ---------------------------------------------------------------------- */
 export const projects = [
-  {
-    title: '学内サークル向け備品予約Webアプリ',
-    period: '2025年4月 - 2025年7月',
-    team: '個人開発',
-    summary:
-      '紙の予約表で運用されていたサークル備品の貸し出しを、DB制約で二重予約を防ぐWebアプリに置き換えた個人プロジェクト。要件定義からデプロイまでを1人で担当した。',
-    challenge:
-      '所属する軽音サークルでは、練習室の機材（アンプ・マイク等）の予約を紙の台帳で管理していた。記入漏れによる予約の重複や、誰が今借りているか分からない状態が月に数回発生していた。',
-    role: '要件定義・DB設計・フロントエンド/バックエンド実装・デプロイまでを1人で担当。',
-    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'GitHub Actions', 'Vercel'],
-    process: [
-      { type: 'step', text: 'サークル員18名にヒアリングし、予約の重複が月平均3.2件発生していることを確認' },
-      { type: 'step', text: '予約テーブルにユニーク制約を設け、同一機材・同一時間帯の予約をDBレベルで拒否する設計を採用' },
-      {
-        type: 'rejected',
-        text: 'Firestoreでの実装を検討したが、排他制御をアプリ側で書く必要が生じ複雑化するためPostgreSQL＋トランザクションを選定',
-      },
-      { type: 'step', text: 'Node.js + ExpressでREST APIを実装し、React + TypeScriptでフロントエンドを構築' },
-      { type: 'step', text: 'GitHub ActionsでCIを構築し、push時にLintとテストを自動実行するパイプラインを整備' },
-      { type: 'step', text: 'リリース後2週間、Vercel Analyticsでレスポンスタイムと利用状況を観察し、遅いAPIにインデックスを追加' },
-    ],
-    results: [
-      { label: '予約の重複発生件数', value: '月3.2件 → 0件', detail: 'DBのユニーク制約により技術的に発生不可能な設計に変更' },
-      { label: 'APIレスポンスタイム', value: '平均120ms', detail: 'インデックス追加後、Vercel Analyticsで計測' },
-      { label: '継続利用率', value: '89%', detail: 'サークル員18名中16名が1か月後も利用を継続' },
-    ],
-    learning:
-      'アプリケーション側のロジックだけに頼らず、DBの制約でデータの整合性を保証する設計にすると、バグの作り込み自体を防げると実感した。',
-  },
-  {
-    title: 'ハッカソン「防災みまもりマップ」バックエンド開発',
-    period: '2025年9月（48時間ハッカソン）',
-    team: 'チーム4名（バックエンド1名・フロントエンド2名・PM1名）',
-    summary:
-      '地域の防災情報を地図上で確認できるWebアプリを48時間で開発し、審査員特別賞を受賞したチーム制作。バックエンドAPIと検索性能の改善を担当した。',
-    challenge:
-      '高齢者や土地勘のない転入者にとって、避難所やハザードマップの情報が自治体サイトの中に埋もれていて探しにくいという課題が事前リサーチで見えていた。',
-    role:
-      'チームのバックエンド担当として、避難所検索APIの設計・実装、位置情報検索のパフォーマンス改善、Docker環境構築を担当。',
-    techStack: ['Python', 'FastAPI', 'PostgreSQL', 'PostGIS', 'Docker', 'Leaflet.js'],
-    process: [
-      { type: 'step', text: '開始1時間でAPI仕様をフロントエンド担当とすり合わせ、避難所検索エンドポイントの入出力を確定' },
-      {
-        type: 'rejected',
-        text: 'Firebaseでの実装を検討したが、現在地からの近傍検索クエリを直感的に書けるPostGIS拡張を優先しPostgreSQLを選定',
-      },
-      { type: 'step', text: 'FastAPIで避難所検索APIを実装し、PostGISの空間インデックスで現在地からの距離順ソートを実装' },
-      { type: 'step', text: 'Docker Composeで開発環境を統一し、メンバー間の環境差異によるトラブルを解消' },
-      { type: 'step', text: '残り6時間の時点でAPIレスポンスが500ms超と遅いことをログで発見し、空間インデックスを追加して改善' },
-    ],
-    results: [
-      { label: '審査結果', value: '審査員特別賞（全12チーム中）', detail: '「短時間での検証と改善のプロセスが評価された」と講評をいただいた' },
-      { label: 'APIレスポンスタイム', value: '500ms → 80ms', detail: '空間インデックス追加前後の計測比較' },
-    ],
-    learning:
-      '時間が極端に短い開発でも、「遅い気がする」で止まらずログで実測してから直すことで、限られた時間内でも根拠のある改善ができると学んだ。',
-  },
-  {
-    title: 'ゼミ出席管理Slack Bot',
-    period: '2024年10月 - 2025年2月',
-    team: 'ゼミ内チーム3名（自分含むエンジニア2名・運用1名）',
-    summary:
-      '紙の回覧板で行われていたゼミの出席確認を、Slack上のボタン操作で完結させ自動集計するBotを開発したゼミ活動。',
-    challenge:
-      'ゼミの出席確認が紙の回覧板で行われており、集計担当者が手作業でスプレッドシートに転記するため毎回30分程度かかっていた。転記ミスも月1回程度発生していた。',
-    role: 'Bot本体の設計・実装、Google Sheets連携、デプロイパイプラインの構築を担当。',
-    techStack: ['Python', 'Slack Bolt', 'Google Sheets API', 'GitHub Actions', 'Render'],
-    process: [
-      { type: 'step', text: 'Slackのボタン操作で出席登録し、スプレッドシートに自動反映される要件を運用担当と整理' },
-      {
-        type: 'rejected',
-        text: 'Notion APIとの連携も検討したが、既存の集計フォーマットがスプレッドシートだったため互換性を優先しGoogle Sheets APIを採用',
-      },
-      { type: 'step', text: 'Slack Bolt for PythonでBotを実装し、Block Kitで出席登録用のボタンUIを作成' },
-      { type: 'step', text: 'Google Sheets APIで出席データを自動集計するスクリプトを実装' },
-      { type: 'step', text: 'GitHub ActionsでCIを構築し、Renderへの自動デプロイパイプラインを整備' },
-      { type: 'step', text: '運用開始後にAPI呼び出しが多くレスポンスが遅い場面をログで確認し、集計結果のキャッシュを導入して改善' },
-    ],
-    results: [
-      { label: '出席集計にかかる時間', value: '30分 → 0分', detail: '自動集計により手作業での転記が不要に' },
-      { label: '運用期間中のエラー発生件数', value: '3か月間で0件', detail: 'GitHub Actionsでのテスト自動化とログ監視による' },
-    ],
-    learning:
-      '外部API依存のツールは、動いているときより落ちたときの挙動（リトライ・ログ）を先に設計しておくことが信頼性に直結すると学んだ。',
-  },
   {
     title: 'ちばオープンデータハッカソン2026「景観100選スタンプラリー」開発',
     period: '2026年8月 - 2026年9月（ちばオープンデータハッカソン2026）',
@@ -423,29 +338,8 @@ export const courses = [
  * ---------------------------------------------------------------------- */
 export const timeline = [
   {
-    date: '2023年4月',
-    title: '○○大学 情報工学部 入学',
-    description: 'プログラミング基礎とアルゴリズム・データ構造を学ぶ学部に進学。',
-  },
-  {
-    date: '2024年6月',
-    title: 'Webエンジニアインターンシップ（2週間）',
-    description: 'スタートアップにて、既存プロダクトのバックエンドAPI改修とテストコード追加を経験。',
-  },
-  {
-    date: '2024年10月',
-    title: 'ゼミ出席管理Slack Bot 開発開始',
-    description: 'Bot本体の実装とGoogle Sheets連携を担当し、2025年2月に運用開始。',
-  },
-  {
     date: '2025年4月',
-    title: '学内サークル向け備品予約Webアプリを個人開発',
-    description: '要件定義からDB設計・実装・デプロイまでを1人で担当し、7月にリリース。',
-  },
-  {
-    date: '2025年9月',
-    title: '学生ハッカソン「防災みまもりマップ」で審査員特別賞',
-    description: 'チームのバックエンド担当としてAPI実装と検索性能の改善を担当。',
+    title: '千葉工業大学 情報変革科学部 情報工学科 入学',
   },
   {
     date: '2026年9月',
@@ -453,9 +347,8 @@ export const timeline = [
     description: 'チーム「loveTAKE」の開発メインの1人としてフロントエンド全体とDocker/Flask基盤構築を担当。',
   },
   {
-    date: '2027年3月',
-    title: '○○大学 卒業見込み',
-    description: '卒業研究では「Webアプリケーションにおける排他制御の設計パターン」をテーマに取り組み中。',
+    date: '2029年3月',
+    title: '千葉工業大学 情報変革科学部 情報工学科 卒業見込み',
   },
 ]
 
