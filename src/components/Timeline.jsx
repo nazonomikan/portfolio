@@ -15,7 +15,7 @@ function Timeline() {
               <p className="timeline__date">{entry.date}</p>
               <div className="timeline__content">
                 <h3 className="timeline__title">{entry.title}</h3>
-                <p className="timeline__description">{entry.description}</p>
+                {entry.description && <p className="timeline__description">{entry.description}</p>}
               </div>
             </li>
           ))}
